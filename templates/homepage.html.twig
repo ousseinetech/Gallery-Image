@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+<div class="contain">
+    <header>
+        <h1 class="title">Galairie d'images</h1>
+        {{ form(form) }}
+    </header>
+
+    <div class="gallery">
+        <div class="grid">
+            {% for gallery in galleries %}
+                <a class="card-img" href="{{ vich_uploader_asset(gallery, 'imageFile') }}" data-lightbox="maygallery">
+                    <img src="{{ vich_uploader_asset(gallery, 'imageFile') }}" alt="{{ gallery.name }}">
+                </a>
+            {% else %}
+                <h4 class="title">Aucune image enregistrer</h4>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+{% endblock %}
